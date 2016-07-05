@@ -1,0 +1,25 @@
+Name node
+The NameNode is the centerpiece of an HDFS file system. 
+It keeps the directory tree of all files in the file system,
+and tracks where across the cluster the file data is kept. 
+It does not store the data of these files itself.
+
+Data node
+
+A DataNode stores data in the [HadoopFileSystem].
+ A functional filesystem has more than one DataNode, 
+with data replicated across them. On startup, 
+a DataNode connects to the NameNode; spinning until that service comes up. 
+It then responds to requests from the NameNode for filesystem operations
+
+Resource Manager
+The ResourceManager (RM) is responsible for tracking the resources in a cluster, 
+and scheduling applications (e.g., MapReduce jobs). Prior to Hadoop 2.4,
+the ResourceManager is the single point of failure in a YARN cluster.
+
+Node manager
+The NodeManager (NM) is YARN’s per-node agent, 
+and takes care of the individual compute nodes in a Hadoop cluster. 
+This includes keeping up-to date with the ResourceManager (RM), overseeing containers’ 
+life-cycle management; monitoring resource usage (memory, CPU) of individual containers, 
+tracking node-health, log’s management and auxiliary services which may be exploited by different YARN applications.
